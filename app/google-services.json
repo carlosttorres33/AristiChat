@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30279267088",
+    "project_id": "aristichat-f94c0",
+    "storage_bucket": "aristichat-f94c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30279267088:android:5adf5653c14e1912a46b95",
+        "android_client_info": {
+          "package_name": "com.carlostorres.aristichat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUAa6BBJEZaQ2xER65LtdsjJrflWXrDts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
