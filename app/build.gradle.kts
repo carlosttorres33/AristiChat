@@ -1,6 +1,14 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+
+    //Dagger Hilt
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+
+    //Firebase
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -56,5 +64,9 @@ dependencies {
     //AndroidNavigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    //DaggerHilt
+    implementation("com.google.dagger:hilt-android:2.45")
+    kapt("com.google.dagger:hilt-compiler:2.44")
 
 }
