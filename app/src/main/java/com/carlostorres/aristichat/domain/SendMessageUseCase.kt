@@ -10,7 +10,7 @@ class SendMessageUseCase @Inject constructor(
     private val firebaseChatService: FirebaseChatService
 ) {
 
-    operator fun invoke(msg : String){
+    operator fun invoke(msg : String, nickName: String){
 
         val calendar = Calendar.getInstance()
 
@@ -24,7 +24,7 @@ class SendMessageUseCase @Inject constructor(
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val userDto = UserDto(
-            userName = "Prueba",
+            userName = nickName,
             admin = false
         )
 
