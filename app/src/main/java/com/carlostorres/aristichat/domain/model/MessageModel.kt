@@ -1,13 +1,13 @@
-package com.carlostorres.aristichat.data.network.dto
+package com.carlostorres.aristichat.domain.model
 
-data class MessageDto(
+data class MessageModel(
     val msg : String,
     val hour : String,
     val date : String,
-    val user : UserDto
+    val user : UserModel
 )
 
-data class UserDto(
+data class  UserModel(
     val userName : String,
     val admin : Boolean
 )
