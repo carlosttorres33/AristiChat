@@ -6,6 +6,7 @@ import com.carlostorres.aristichat.domain.GetUserNameUseCase
 import com.carlostorres.aristichat.domain.SaveUserNameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -28,7 +29,7 @@ class MainViewModel @Inject constructor(
 
     private fun verifyUserLogged() {
         viewModelScope.launch {
-            val name = getUserNameUseCase()
+            val name = async { getUserNameUseCase() }.await()
 
             if (name.isNotEmpty()){
                 _uiState.value = MainViewState.REGISTERED

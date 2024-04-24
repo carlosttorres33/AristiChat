@@ -41,4 +41,12 @@ class DatabaseServiceImpl @Inject constructor(
             preferences[USER_NAME] ?: ""
         }
 
+    override suspend fun clear() {
+        context.userPreferencesDataStore.edit { preferences ->
+
+            preferences[USER_NAME] = ""
+
+        }
+    }
+
 }

@@ -30,7 +30,10 @@ class ChatFragment : Fragment() {
         binding = FragmentChatBinding.inflate(inflater, container, false)
 
         binding.ivBack.setOnClickListener {
-            findNavController().navigate(R.id.action_back)
+            viewModel.logout(){
+                findNavController().navigate(R.id.action_back)
+            }
+
         }
 
         setUpUI()
@@ -53,6 +56,12 @@ class ChatFragment : Fragment() {
 
         subscribeToMessage()
 
+        setUpToolbar()
+
+    }
+
+    private fun setUpToolbar() {
+        binding.tvTitle.text = "Bienvenido " + viewModel.name
     }
 
     private fun setUpMessages() {
@@ -74,6 +83,7 @@ class ChatFragment : Fragment() {
 
             viewModel.messageList.collect(){
 
+                setUpToolbar()
                 chatAdapter.updateList(it.toMutableList(), viewModel.name)
                 binding.rvMessage.scrollToPosition(chatAdapter.messageList.size - 1)
 

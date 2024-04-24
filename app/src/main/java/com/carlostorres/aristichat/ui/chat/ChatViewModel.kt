@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.carlostorres.aristichat.domain.GetMessagesUseCase
 import com.carlostorres.aristichat.domain.GetUserNameUseCase
+import com.carlostorres.aristichat.domain.LogoutUseCase
 import com.carlostorres.aristichat.domain.SaveUserNameUseCase
 import com.carlostorres.aristichat.domain.SendMessageUseCase
 import com.carlostorres.aristichat.domain.model.MessageModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -19,7 +21,8 @@ import javax.inject.Inject
 class ChatViewModel @Inject constructor(
     private val sendMessageUseCase: SendMessageUseCase,
     private val getMessagesUseCase: GetMessagesUseCase,
-    private val getUserNameUseCase: GetUserNameUseCase
+    private val getUserNameUseCase: GetUserNameUseCase,
+    private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {
 
     var name = ""
@@ -58,6 +61,13 @@ class ChatViewModel @Inject constructor(
 
         sendMessageUseCase(msg, name)
 
+    }
+
+    fun logout(onViewFinish : () -> Unit) {
+        viewModelScope.launch {
+            async { logoutUseCase() }.await()
+            onViewFinish()
+        }
     }
 
 }

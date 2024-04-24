@@ -7,5 +7,6 @@ interface DatabaseService {
     suspend fun saveUserName(nickName : String)
 
     fun getUserName(): Flow<String>
+    suspend fun clear()
 
 }
