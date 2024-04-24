@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/tvDateMe"
+        android:id="@+id/tvDateOther"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +26,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="AristiDevs"
@@ -42,10 +43,10 @@
         app:cardCornerRadius="12dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDateMe">
+        app:layout_constraintTop_toBottomOf="@id/tvDateOther">
 
         <TextView
-            android:id="@+id/tvChatMe"
+            android:id="@+id/tvChatOther"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="12dp"
@@ -62,7 +63,7 @@
         android:textSize="11sp"
         android:textColor="@color/hour_date_color"
         app:layout_constraintStart_toEndOf="@id/cvChat"
-        app:layout_constraintTop_toBottomOf="@id/cvChat"
+        app:layout_constraintBottom_toBottomOf="@id/cvChat"
         tools:text="12:45"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

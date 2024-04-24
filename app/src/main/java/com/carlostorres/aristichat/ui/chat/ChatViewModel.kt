@@ -8,6 +8,7 @@ import com.carlostorres.aristichat.domain.SendMessageUseCase
 import com.carlostorres.aristichat.domain.model.MessageModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,8 @@ class ChatViewModel @Inject constructor(
         getMessages()
     }
 
-    var messageList = MutableStateFlow<List<MessageModel>>(emptyList())
+    private var _messageList = MutableStateFlow<List<MessageModel>>(emptyList())
+    val messageList:StateFlow<List<MessageModel>> = _messageList
 
     private fun getMessages(){
 
@@ -29,7 +31,7 @@ class ChatViewModel @Inject constructor(
 
             getMessagesUseCase().collect(){
                 Log.d("Aris tuto", "info: $it")
-                messageList.value = it
+                _messageList.value = it
 
             }
 
