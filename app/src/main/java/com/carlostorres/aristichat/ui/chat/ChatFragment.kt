@@ -11,10 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carlostorres.aristichat.R
 import com.carlostorres.aristichat.databinding.FragmentChatBinding
-import com.carlostorres.aristichat.domain.model.MessageModel
 import com.carlostorres.aristichat.ui.chat.adapter.ChatAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -55,7 +53,7 @@ class ChatFragment : Fragment() {
 
     private fun setUpMessages() {
 
-        chatAdapter = ChatAdapter(mutableListOf(), "aris")
+        chatAdapter = ChatAdapter(mutableListOf())
 
         binding.rvMessage.apply {
 
@@ -72,7 +70,7 @@ class ChatFragment : Fragment() {
 
             viewModel.messageList.collect(){
 
-                chatAdapter.updateList(it.toMutableList())
+                chatAdapter.updateList(it.toMutableList(), viewModel.name)
                 binding.rvMessage.scrollToPosition(chatAdapter.messageList.size - 1)
 
             }
